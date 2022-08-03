@@ -78,6 +78,7 @@ class DicePage extends StatefulWidget {
 class _DicePageState extends State<DicePage> {
   int leftDiceNumber = 1;
   int rightDiceNumber = 1;
+  int? total = 2;
 
   void rollDice([String? dice]) {
     setState(() {
@@ -89,6 +90,7 @@ class _DicePageState extends State<DicePage> {
         leftDiceNumber = Random().nextInt(6) + 1;
         rightDiceNumber = Random().nextInt(6) + 1;
       }
+      total = leftDiceNumber + rightDiceNumber;
     });
   }
 
@@ -97,6 +99,19 @@ class _DicePageState extends State<DicePage> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        Text(
+          'Total: $total',
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 18.0,
+            shadows: <Shadow>[
+              Shadow(
+                  offset: Offset(3.0, 3.0),
+                  blurRadius: 3.0,
+                  color: Color.fromARGB(120, 0, 0, 0))
+            ],
+          ),
+        ),
         Row(
           children: [
             // Expanded had flex capabilities
